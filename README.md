@@ -1,4 +1,4 @@
-# tensorflow-yolo3
+# tensorflow-yolov3-note
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
@@ -60,4 +60,4 @@ If you want to modify the Gpu index, please modify gpu_index in config.py
 
 ## Reference
 * [keras-yolo3](https://github.com/qqwweee/keras-yolo3)
-* [tensorflow-yolove](https://github.com/aloyschen/tensorflow-yolo3)
+* [tensorflow-yolov3](https://github.com/aloyschen/tensorflow-yolo3)
