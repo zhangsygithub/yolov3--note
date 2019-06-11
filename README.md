@@ -1,9 +1,8 @@
-# yolov3--note
-A tensorflow implementation of YOLOv3  ,pure tensorflow implement without parse *.cfg file
+# tensorflow-yolo3
 
- 
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
- 
+
 ---
 
 ## Detection
@@ -41,9 +40,10 @@ wget https://pjreddie.com/media/files/darknet53.conv.74`
 ```
 python detect.py --image_file ./test.jpg
 ```
- 
 
- 
+## Train Image show on Tensorboard
+![train](https://github.com/aloyschen/tensorflow-yolo3/blob/master/model_data/TrainImage.png)   
+
 ## Notice
 
 If you want to modify the Gpu index, please modify gpu_index in config.py
@@ -60,4 +60,3 @@ If you want to modify the Gpu index, please modify gpu_index in config.py
 
 ## Reference
 * [keras-yolo3](https://github.com/qqwweee/keras-yolo3)
-* [ref](https://github.com/aloyschen/tensorflow-yolo3)

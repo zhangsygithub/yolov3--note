@@ -1,0 +1,131 @@
+	[net]batch=1subdivisions=1width=416height=416channels=3momentum=0.9decay=0.0005angle=0saturation = 1.5exposure = 1.5hue=.1
+	learning_rate=0.001burn_in=1000max_batches = 500200policy=stepssteps=400000,450000scales=.1,.1
+0	[convolutional]batch_normalize=1 filters=32 size=3 stride=1 pad=1 activation=leaky		416*416*32
+
+#darknet53的残差块
+	# Downsample
+1	[convolutional]batch_normalize=1 filters=64 size=3 stride=2 pad=1 activation=leaky		208*208*64
+2	[convolutional]batch_normalize=1 filters=32 size=1 stride=1 pad=1 activation=leaky		208*208*32
+3	[convolutional]batch_normalize=1 filters=64 size=3 stride=1 pad=1 activation=leaky		208*208*64
+4	[shortcut]from=-3activation=linear														208*208*64
+	# Downsample
+5	[convolutional]batch_normalize=1 filters=128 size=3 stride=2 pad=1 activation=leaky		104*104*128
+6	[convolutional]batch_normalize=1 filters=64 size=1 stride=1 pad=1 activation=leaky		104*104*64
+7	[convolutional]batch_normalize=1 filters=128 size=3 stride=1 pad=1 activation=leaky		104*104*128
+8	[shortcut]from=-3activation=linear														104*104*128
+9	[convolutional]batch_normalize=1 filters=64 size=1 stride=1 pad=1 activation=leaky		104*104*64
+10	[convolutional]batch_normalize=1 filters=128 size=3 stride=1 pad=1 activation=leaky		104*104*128
+11	[shortcut]from=-3activation=linear														104*104*128
+	# Downsample
+12	[convolutional]batch_normalize=1 filters=256 size=3 stride=2 pad=1 activation=leaky		52*52*256
+13	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky		52*52*128
+14	[convolutional]batch_normalize=1 filters=256 size=3 stride=1 pad=1 activation=leaky		52*52*256
+15	[shortcut]from=-3activation=linear														52*52*256
+16	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky		52*52*128
+17	[convolutional]batch_normalize=1 filters=256 size=3 stride=1 pad=1 activation=leaky		52*52*256
+18	[shortcut]from=-3activation=linear														52*52*256
+19	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky		52*52*128
+20	[convolutional]batch_normalize=1 filters=256 size=3 stride=1 pad=1 activation=leaky		52*52*256
+21	[shortcut]from=-3activation=linear														52*52*256
+22	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky		52*52*128
+23	[convolutional]batch_normalize=1 filters=256 size=3 stride=1 pad=1 activation=leaky		52*52*256
+24	[shortcut]from=-3activation=linear														52*52*256
+25	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky		52*52*128
+26	[convolutional]batch_normalize=1 filters=256 size=3 stride=1 pad=1 activation=leaky		52*52*256
+27	[shortcut]from=-3activation=linear														52*52*256
+28	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky		52*52*128
+29	[convolutional]batch_normalize=1 filters=256 size=3 stride=1 pad=1 activation=leaky		52*52*256
+30	[shortcut]from=-3activation=linear														52*52*256
+31	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky		52*52*128
+32	[convolutional]batch_normalize=1 filters=256 size=3 stride=1 pad=1 activation=leaky		52*52*256
+33	[shortcut]from=-3activation=linear														52*52*256
+34	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky		52*52*128
+35	[convolutional]batch_normalize=1 filters=256 size=3 stride=1 pad=1 activation=leaky		52*52*256
+36	[shortcut]from=-3activation=linear														52*52*256
+	#输出特征层为conv2d_26 大小为 52*52*256,将输入到一个yolo_block里面进一步卷积，针对小目标的检测
+
+	# Downsample
+37	[convolutional]batch_normalize=1 filters=512 size=3 stride=2 pad=1 activation=leaky		26*26*512
+38	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky		26*26*256
+39	[convolutional]batch_normalize=1 filters=512 size=3 stride=1 pad=1 activation=leaky		26*26*512
+40	[shortcut]from=-3activation=linear														26*26*512
+41	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky		26*26*256
+42	[convolutional]batch_normalize=1 filters=512 size=3 stride=1 pad=1 activation=leaky		26*26*512
+43	[shortcut]from=-3activation=linear														26*26*512
+44	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky		26*26*512
+45	[convolutional]batch_normalize=1 filters=512 size=3 stride=1 pad=1 activation=leaky
+46	[shortcut]from=-3activation=linear
+47	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky
+48	[convolutional]batch_normalize=1 filters=512 size=3 stride=1 pad=1 activation=leaky
+49	[shortcut]from=-3activation=linear
+50	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky
+51	[convolutional]batch_normalize=1 filters=512 size=3 stride=1 pad=1 activation=leaky
+52	[shortcut]from=-3activation=linear
+53	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky
+54	[convolutional]batch_normalize=1 filters=512 size=3 stride=1 pad=1 activation=leaky
+55	[shortcut]from=-3activation=linear
+56	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky
+57	[convolutional]batch_normalize=1 filters=512 size=3 stride=1 pad=1 activation=leaky
+58	[shortcut]from=-3activation=linear
+59	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky
+60	[convolutional]batch_normalize=1 filters=512 size=3 stride=1 pad=1 activation=leaky		26*26*512
+61	[shortcut]from=-3activation=linear														26*26*512
+	#输出特征层为conv2d_43 大小为 52*52*512,将输入到一个yolo_block里面进一步卷积，针对小目标的检测
+
+
+
+	# Downsample
+62	[convolutional]batch_normalize=1 filters=1024 size=3 stride=2 pad=1 activation=leaky	13*13*1024
+63	[convolutional]batch_normalize=1 filters=512 size=1 stride=1 pad=1 activation=leaky		13*13*512
+64	[convolutional]batch_normalize=1 filters=1024 size=3 stride=1 pad=1 activation=leaky	13*13*1024
+65	[shortcut]from=-3activation=linear
+66	[convolutional]batch_normalize=1 filters=512 size=1 stride=1 pad=1 activation=leaky
+67	[convolutional]batch_normalize=1 filters=1024 size=3 stride=1 pad=1 activation=leaky
+68	[shortcut]from=-3activation=linear
+69	[convolutional]batch_normalize=1 filters=512 size=1 stride=1 pad=1 activation=leaky
+70	[convolutional]batch_normalize=1 filters=1024 size=3 stride=1 pad=1 activation=leaky
+71	[shortcut]from=-3activation=linear
+72	[convolutional]batch_normalize=1 filters=512 size=1 stride=1 pad=1 activation=leaky
+73	[convolutional]batch_normalize=1 filters=1024 size=3 stride=1 pad=1 activation=leaky	13*13*1024
+74	[shortcut]from=-3activation=linear														13*13*1024
+	#输出特征层为conv2d_52 大小为 52*52*256,将输入到一个yolo_block里面进一步卷积，针对小目标的检测
+
+
+
+	###################### 以上是基础网络结构(darknet53)
+75	[convolutional]batch_normalize=1 filters=512 size=1 stride=1 pad=1 activation=leaky		13*13*512
+76	[convolutional]batch_normalize=1 size=3 stride=1 pad=1 filters=1024 activation=leaky	13*13*1024
+77	[convolutional]batch_normalize=1 filters=512 size=1 stride=1 pad=1 activation=leaky		13*13*512
+78	[convolutional]batch_normalize=1 size=3 stride=1 pad=1 filters=1024 activation=leaky	13*13*1024
+79	[convolutional]batch_normalize=1 filters=512 size=1 stride=1 pad=1 activation=leaky		13*13*512
+80	[convolutional]batch_normalize=1 size=3 stride=1 pad=1 filters=1024 activation=leaky	13*13*1024
+81	[convolutional]size=1 stride=1 pad=1 filters=255 activation=linear						13*13*255
+82	[yolo]mask = 6,7,8anchors = 10,13,  16,30,  33,23,  30,61,  62,45,  59,119,  116,90,  156,198,  373,326
+	classes=80num=9jitter=.3ignore_thresh = .7truth_thresh = 1random=1
+83	[route]layers = -4																		13*13*512
+84	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky		13*13*256
+85	[upsample]stride=2																		26*26*256
+86	[route]layers = -1, 61																	26*26*(256+512)
+87	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky		26*26*256
+88	[convolutional]batch_normalize=1 size=3 stride=1 pad=1 filters=512 activation=leaky
+89	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky
+90	[convolutional]batch_normalize=1 size=3 stride=1 pad=1 filters=512 activation=leaky
+91	[convolutional]batch_normalize=1 filters=256 size=1 stride=1 pad=1 activation=leaky		26*26*256
+92	[convolutional]batch_normalize=1 size=3 stride=1 pad=1 filters=512 activation=leaky		26*26*512
+93	[convolutional]size=1stride=1 pad=1 filters=255 activation=linear						26*26*255
+94	[yolo]mask = 3,4,5anchors = 10,13,  16,30,  33,23,  30,61,  62,45,  59,119,  116,90,  156,198,  373,326
+	classes=80num=9jitter=.3ignore_thresh = .7truth_thresh = 1random=1
+95	[route]layers = -4																		26*26*256
+96	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky		26*26*128
+97	[upsample]stride=2																		52*52*128
+98	[route]layers = -1, 36																	52*52*(128+256)
+99	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky		52*52*128
+100	[convolutional]batch_normalize=1 size=3 stride=1 pad=1 filters=256 activation=leaky
+101	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky
+102	[convolutional]batch_normalize=1 size=3 stride=1 pad=1 filters=256 activation=leaky
+103	[convolutional]batch_normalize=1 filters=128 size=1 stride=1 pad=1 activation=leaky
+104	[convolutional]batch_normalize=1 size=3 stride=1 pad=1 filters=256 activation=leaky		52*52*256
+105	[convolutional]size=1 stride=1 pad=1 filters=255 activation=linear						52*52*255
+106	[yolo]mask = 0,1,2anchors = 10,13,  16,30,  33,23,  30,61,  62,45,  59,119,  116,90,  156,198,  373,326
+	classes=80num=9jitter=.3ignore_thresh = .7truth_thresh = 1random=1
+
