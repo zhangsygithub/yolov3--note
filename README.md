@@ -60,4 +60,4 @@ If you want to modify the Gpu index, please modify gpu_index in config.py
 
 ## Reference
 * [keras-yolo3](https://github.com/qqwweee/keras-yolo3)
-  [ref](https://github.com/aloyschen/tensorflow-yolo3)
+* [ref](https://github.com/aloyschen/tensorflow-yolo3)
